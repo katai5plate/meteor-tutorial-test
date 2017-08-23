@@ -1,0 +1,39 @@
+<body>
+
+  <div class="container">
+    <header>
+      <!-- incompleteCount関数の返り値 -->
+      <h1>Todo List ({{incompleteCount}})</h1>
+
+      <!-- hide-completedクラスでレ印ボックスを作る -->
+      <label class="hide-completed">
+        <input type="checkbox" />
+        Hide Completed Tasks
+      </label>
+
+      <!-- ログインフォームを作る -->
+      {{> loginButtons}}
+
+      <!-- もしログイン中なら -->
+      {{#if currentUser}}
+        <!-- new-taskクラスでフォームを作る -->
+        <form class="new-task">
+          <!-- 入力欄を作る -->
+          <input type="text" name="text"
+                 placeholder="Type to add new tasks" />
+        </form>
+      {{/if}}
+
+      
+    </header>
+ 
+    <ul>
+      <!-- tasks関数の返り値のデータを調べる -->
+      {{#each tasks}}
+        <!-- 各タスクの処理はtaskテンプレートへ -->
+        {{> task}}
+      {{/each}}
+    </ul>
+
+  </div>
+</body>

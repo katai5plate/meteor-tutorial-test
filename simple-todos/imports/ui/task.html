@@ -1,0 +1,25 @@
+<template name="task">
+  <!-- もしチェックされていたらこのliタグをcheckedクラスにし、 
+       もしプレイベートならクラス名に「 private」を加える。 -->
+  <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
+    <!-- 削除ボタン。deleteクラスでEV取得できるようにする -->
+    <button class="delete">&times;</button>
+    <!-- レ印トグルチェックボックス。
+         toggle-checkedクラスでEV取得できるようにする。
+         checked要素はtaskテンプレのchecked要素に同期 -->
+    <input type="checkbox" class="toggle-checked" checked="{{checked}}" />
+    
+    {{#if isOwner}}
+      <button class="toggle-private">
+        {{#if private}}
+          Private
+        {{else}}
+          Public
+        {{/if}}
+      </button>
+    {{/if}}
+
+    <!-- textクラスでテキスト。ユーザー名と内容 -->
+    <span class="text"><strong>{{username}}</strong> - {{text}}</span>
+  </li>
+</template>
